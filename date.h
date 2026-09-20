@@ -11,14 +11,20 @@ private:
 	unsigned int day;
 
 public:
-	explicit Date(const std::string& date) {
+	Date() { }
+	explicit Date(std::string_view date) {
 		if (date.length() != 10 || date[4] != '-' || date[7] != '-') {
 			throw std::invalid_argument("Wrong data type");
 		}
 
-		year = std::stoi(date.substr(0, 4));
-		month = std::stoi(date.substr(5, 2));
-		day = std::stoi(date.substr(8, 2));
+		std::string date_string(date.substr(0, 4));
+		year = std::stoi(date_string);
+
+		date_string = date.substr(5, 2);
+		month = std::stoi(date_string);
+
+		date_string = date.substr(8, 2);
+		day = std::stoi(date_string);
 	}
 
 	bool is_current() const {

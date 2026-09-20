@@ -11,21 +11,27 @@ private:
 	unsigned int seconds;
 
 public:
-	explicit Time(const std::string& time) {
+	Time() { }
+	explicit Time(std::string_view time) {
 		if (time.length() != 8 || time[2] != ':' || time[5] != ':') {
 			throw std::invalid_argument("Wrong time type");
 		}
 
-		hours = std::stoi(time.substr(0, 2));
-		minutes = std::stoi(time.substr(3, 2));
-		seconds = std::stoi(time.substr(6, 2));
+		std::string time_string(time.substr(0, 2));
+		hours = std::stoi(time_string);
+
+		time_string = time.substr(3, 2);
+		minutes = std::stoi(time_string);
+
+		time_string = time.substr(6, 2);
+		seconds = std::stoi(time_string);
 	}
 
 	bool is_current() const {
 		std::time_t now = std::time(nullptr);
 		std::tm *now_tm = std::localtime(&now);
 
-		return !(hours != now_tm->tm_hour || minutes != now_tm->tm_min || seconds != now_tm->tm_sec);
+		return (hours != now_tm->tm_hour || minutes != now_tm->tm_min || seconds != now_tm->tm_sec);
 	}
 
 	unsigned int get_hours() const { return hours; }
