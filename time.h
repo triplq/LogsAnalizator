@@ -31,7 +31,7 @@ public:
 		std::time_t now = std::time(nullptr);
 		std::tm *now_tm = std::localtime(&now);
 
-		return (hours != now_tm->tm_hour || minutes != now_tm->tm_min || seconds != now_tm->tm_sec);
+		return !(hours != now_tm->tm_hour || minutes != now_tm->tm_min || seconds != now_tm->tm_sec);
 	}
 
 	unsigned int get_hours() const { return hours; }
