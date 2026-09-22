@@ -34,6 +34,31 @@ public:
 		return !(hours != now_tm->tm_hour || minutes != now_tm->tm_min || seconds != now_tm->tm_sec);
 	}
 
+	bool operator> (const Time& other) const {
+		return hours > other.hours || hours >= other.hours && minutes > other.minutes || hours >= other.hours && minutes >= other.minutes && seconds > other.seconds;
+	}
+
+	bool operator< (const Time& other) const {
+		return hours < other.hours || hours <= other.hours && minutes < other.minutes || hours <= other.hours && minutes <= other.minutes && seconds < other.seconds;
+	}
+
+	bool operator== (const Time& other) const {
+		return seconds == other.seconds && minutes == other.minutes && hours == other.hours;
+	}
+
+	bool operator!= (const Time& other) const {
+		return seconds != other.seconds || minutes != other.minutes || hours != other.hours;
+	}
+
+	bool operator>= (const Time& other) const {
+		return hours > other.hours || hours >= other.hours && minutes > other.minutes || hours >= other.hours && minutes >= other.minutes && seconds > other.seconds || seconds == other.seconds && minutes == other.minutes && hours == other.hours;
+	}
+
+	bool operator<= (const Time& other) const {
+		return hours < other.hours || hours <= other.hours && minutes < other.minutes || hours <= other.hours && minutes <= other.minutes && seconds < other.seconds || seconds == other.seconds && minutes == other.minutes && hours == other.hours;
+	}
+
+
 	unsigned int get_hours() const { return hours; }
 	unsigned int get_minutes() const { return minutes; }
 	unsigned int get_seconds() const { return seconds; }

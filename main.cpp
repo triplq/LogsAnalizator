@@ -34,9 +34,9 @@ int main() {
 	std::vector<std::pair<std::string, size_t>> subsystems_vector {std::make_move_iterator(subsystems.begin()), std::make_move_iterator(subsystems.end())};
 
 	std::partial_sort(subsystems_vector.begin(), subsystems_vector.begin() + 5, subsystems_vector.end(), [](const auto& a, const auto& b){ return a.second > b.second; });
-	// std::sort(subsystems_vector.begin(), subsystems_vector.end(), [] (const auto& a, const auto& b){
-	// 																								return a.second > b.second;
-	// }); 
+	
+	auto it_max = std::max_element(logs.begin(), logs.end(), [](const auto& a, const auto& b){ return a.time > b.time && a.date >= b.date; });
+	auto it_min = std::max_element(logs.begin(), logs.end(), [](const auto& a, const auto& b){ return a.time < b.time && a.date <= b.date; });
 
 	subsystems_vector.resize(5);
 	subsystems_vector.shrink_to_fit();
@@ -64,6 +64,12 @@ int main() {
 	for (const auto& [key, val] : subsystems_vector) {
 		std::cout << key << ' ' << val << '\n';
 	}
+
+	std::cout << "\n=========THE OLDEST LINE========\n";
+	std::cout << *it_max << '\n';
+
+	std::cout << "\n=========THE NEWEST LINE========\n";
+	std::cout << *it_min << '\n';
 	
 	return 0;
 }

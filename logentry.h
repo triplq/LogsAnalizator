@@ -14,3 +14,5 @@ struct LogEntry {
 
 	explicit LogEntry(std::string_view str);
 };
+
+std::ostream& operator<<(std::ostream& stream, const LogEntry& log);
