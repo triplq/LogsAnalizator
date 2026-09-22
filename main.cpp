@@ -1,4 +1,6 @@
+#include <algorithm>
 #include <fstream>
+#include <functional>
 #include <iostream>
 #include <iterator>
 #include <stdexcept>
@@ -31,9 +33,10 @@ int main() {
 
 	std::vector<std::pair<std::string, size_t>> subsystems_vector {std::make_move_iterator(subsystems.begin()), std::make_move_iterator(subsystems.end())};
 
-	std::sort(subsystems_vector.begin(), subsystems_vector.end(), [] (const auto& a, const auto& b){
-																									return a.second > b.second;
-	}); 
+	std::partial_sort(subsystems_vector.begin(), subsystems_vector.begin() + 5, subsystems_vector.end(), [](const auto& a, const auto& b){ return a.second > b.second; });
+	// std::sort(subsystems_vector.begin(), subsystems_vector.end(), [] (const auto& a, const auto& b){
+	// 																								return a.second > b.second;
+	// }); 
 
 	subsystems_vector.resize(5);
 	subsystems_vector.shrink_to_fit();
