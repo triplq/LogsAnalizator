@@ -9,7 +9,7 @@ struct LogEntry {
 	Date date;
 	Time time;
 	Level level;
-	std::string system;
+	std::string subsystem;
 	std::string message;
 
 	explicit LogEntry(std::string_view str);

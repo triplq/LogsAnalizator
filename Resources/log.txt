@@ -1,0 +1,24 @@
+2026-09-11 10:08:56 INFO  server    Request handled in 261ms
+2026-09-11 10:04:20 INFO  server    Request handled in 382ms
+2026-09-11 10:08:28 WARN  cache     Eviction rate above threshold
+2026-09-11 10:03:03 INFO  server    Returned status 200 for /api/v1/users
+2026-09-11 10:11:50 INFO  server    Request handled in 335ms
+2026-09-11 10:15:09 INFO  cache     Cache hit ratio 97%
+2026-09-11 10:16:40 INFO  payments  Payment 30926 processed
+2026-09-11 10:19:58 INFO  database  Query executed in 28ms
+2026-09-11 10:23:33 INFO  database  Query executed in 13ms
+2026-09-11 10:25:24 INFO  payments  Payment 15695 processed
+2026-09-11 10:28:50 INFO  database  Query executed in 49ms
+2026-09-11 10:29:30 INFO  cache     Cache miss for key user:2963
+2026-09-11 10:32:17 INFO  server    Request handled in 341ms
+2026-09-11 10:33:35 ERROR server      Too many failed attempts, user 1908 locked
+2026-09-11 10:37:36 INFO  server    Request handled in 328ms
+2026-09-11 10:41:29 INFO  database  Query executed in 27ms
+2026-09-11 10:44:40 ERROR server    Returned status 500 for /api/v3/payments
+2026-09-11 10:45:18 INFO  cache     Cache hit ratio 75%
+2026-09-11 10:46:19 INFO  database  Query executed in 82ms
+2026-09-11 10:49:35 WARN  cache     Eviction rate above threshold
+2026-09-11 10:53:30 INFO  auth      User 263 logged in
+2026-09-11 10:57:16 INFO  database  Query executed in 28ms
+2026-09-11 11:01:29 INFO  scheduler Job 162 finished in 218s
+2026-09-11 11:04:36 ERROR database  Connection timeout after 46s

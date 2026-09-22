@@ -1,14 +1,28 @@
+#include <fstream>
 #include <iostream>
-#include "time.h"
-#include "date.h"
+#include <stdexcept>
+#include "logentry.h"
 
 int main() {
-	Date date("2026-09-20");
-	Time time("20:36:40");
-	std::cout << date.get_year() << ' ' << date.get_month() << ' ' << date.get_day() << '\n'; 
-	std::cout << time.get_hours() << ' ' << time.get_minutes() << ' ' << time.get_seconds() << '\n';
+	std::vector<LogEntry> logs;
+	size_t counter = 0;
 
-	std::cout << date.is_current() << ' ' << time.is_current() << '\n';
+	std::string line;
 
+	std::ifstream in;
+	in.open("Resources/log.txt");
+	if (in.is_open()) {
+		while (std::getline(in, line)) {
+			try {
+				logs.push_back(LogEntry(line));
+			} catch (std::invalid_argument) {
+				counter++;
+			}
+		}
+	}
+	in.close();
+
+	std::cout << counter << '\n';
+	
 	return 0;
 }

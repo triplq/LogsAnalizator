@@ -1,6 +1,8 @@
 #include "logentry.h"
+#include <cctype>
 #include <stdexcept>
 #include <vector>
+#include <iostream>
 
 LogEntry::LogEntry(std::string_view str) {
 		std::vector<std::string_view> words;
@@ -30,8 +32,18 @@ LogEntry::LogEntry(std::string_view str) {
 			throw std::invalid_argument("Wrong level");
 		}
 
-		system = words[3];
+		subsystem = words[3];
+		for (auto& c : subsystem) {
+			if (std::isupper(c)) {
+				throw std::invalid_argument("Something with subsystem");
+			}
+		}
+
 		message = words[4];
+
+		if (!std::isupper(words[4][0])) {
+			throw std::invalid_argument("Something with subsystem or message");
+		}
 
 		for (size_t i = 5; i < words.size(); i++) {
 			message += " ";
