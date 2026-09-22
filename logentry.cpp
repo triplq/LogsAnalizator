@@ -16,7 +16,7 @@ LogEntry::LogEntry(std::string_view str) {
 		}
 
 		if (words.size() < 5) {
-			std::invalid_argument("Low quantity of words");
+			throw std::invalid_argument("Low quantity of words");
 		}
 
 		date = Date(words[0]);
