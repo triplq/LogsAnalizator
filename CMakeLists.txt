@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 project(LogsAnalizator)
 
 
-add_executable(main main.cpp logentry.cpp)
+add_executable(main main.cpp logentry.cpp stats.cpp)
 
 add_custom_command(TARGET main POST_BUILD
 	COMMAND ${CMAKE_COMMAND} -E copy_directory
