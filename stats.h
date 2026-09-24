@@ -19,7 +19,7 @@ void most_send_message (std::unordered_map<std::string, size_t>&);
 
 template <typename KeyExtractor>
 auto top_n (const std::vector<LogEntry>& logs, KeyExtractor key, size_t n) {
-	if (n < logs.size()) {
+	if (n > logs.size()) {
 		throw std::invalid_argument("Small n");
 	}
 
