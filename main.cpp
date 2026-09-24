@@ -28,8 +28,10 @@ int main(int argc, char* argv[]) {
 		std::string value = arg.substr(pos + 1);
 
 		if (key == "level") {
-			if (value != "ERROR" || value != "WARN" || value != "INFO") {
+			if (value != "ERROR" && value != "WARN" && value != "INFO") {
 				throw std::invalid_argument("Incorrect --level=flag");
+			}
+			else {
 				filters.push_back([value](const LogEntry& p){
 					if (value == "ERROR")
 						return p.level == Level::Error;
@@ -55,11 +57,10 @@ int main(int argc, char* argv[]) {
 
 		if (key == "contains") {
 			filters.push_back([value](const LogEntry& p){
-				return p.message.find(value);
+				return p.message.find(value) != std::string::npos;
 			});
 		}
 	}
-
 
 	std::vector<LogEntry> logs;
 	size_t counter = 0;
@@ -75,6 +76,15 @@ int main(int argc, char* argv[]) {
 		while (std::getline(in, line)) {
 			try {
 				logs.push_back(LogEntry(line));
+				bool allow = true;
+				for (const auto& filter : filters) {
+					if (!filter(logs[logs.size()-1])) {
+						allow = false;
+					}
+				}
+				if (allow) {
+					std::cout << logs[logs.size()-1] << '\n';
+				}
 				levels[logs[logs.size()-1].level]++;
 
 				subsystems[logs[logs.size()-1].subsystem]++;
@@ -158,7 +168,7 @@ int main(int argc, char* argv[]) {
 	std::cout << "\n=========THE MOST SEND MESSAGE========\n";
 	auto it_max = std::max_element(messages.begin(), messages.end(), [](const auto& a, const auto& b) { return a.second < b.second; });
 
-	std::cout << it_max->first << ": " << it_max->second << '\n';	
+	std::cout << it_max->first << ": " << it_max->second << "\n\n";	
 
 	
 	return 0;
