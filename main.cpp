@@ -3,12 +3,12 @@
 #include <functional>
 #include <iostream>
 #include <iterator>
-#include <numeric>
 #include <stdexcept>
 #include <string>
 #include <string_view>
 #include <unordered_map>
 #include "logentry.h"
+#include "stats.h"
 
 int main(int argc, char* argv[]) {
 	std::vector<std::function<bool(const LogEntry&)>> filters;
@@ -76,14 +76,16 @@ int main(int argc, char* argv[]) {
 		while (std::getline(in, line)) {
 			try {
 				logs.push_back(LogEntry(line));
-				bool allow = true;
-				for (const auto& filter : filters) {
-					if (!filter(logs[logs.size()-1])) {
-						allow = false;
+				if (filters.size() != 0) {
+					bool allow = true;
+					for (const auto& filter : filters) {
+						if (!filter(logs[logs.size()-1])) {
+							allow = false;
+						}
 					}
-				}
-				if (allow) {
-					std::cout << logs[logs.size()-1] << '\n';
+					if (allow) {
+						std::cout << logs[logs.size()-1] << '\n';
+					}
 				}
 				levels[logs[logs.size()-1].level]++;
 
@@ -128,47 +130,12 @@ int main(int argc, char* argv[]) {
 		std::cout << key << ' ' << val << '\n';
 	}
 
-
-	std::cout << "\n=========THE OLDEST LINE========\n";
-	auto it_old = std::max_element(logs.begin(), logs.end(), [](const auto& a, const auto& b){ return a.time > b.time && a.date >= b.date; });
-	std::cout << *it_old << '\n';
-
-	std::cout << "\n=========THE NEWEST LINE========\n";
-	auto it_new = std::max_element(logs.begin(), logs.end(), [](const auto& a, const auto& b){ return a.time < b.time && a.date <= b.date; });
-	std::cout << *it_new << '\n';
-
-
-	// std::cout << "\n=========ALL LOGS AT X HOUR========\n";
-	// int hour;
-	// std::cout << "ENTER AN HOUR: ";
-	// std::cin >> hour;
-
-	// auto it_hour = logs.begin();
-	// while ((it_hour = std::find_if(it_hour, logs.end(), [&](const auto& a){ return a.time.get_hours() == hour; })) != logs.end()) {
-	// 	std::cout << *it_hour << '\n';
-	// 	it_hour++;
-	// }
-
-
-	std::cout << "\n=========AVERAGE INTERVAL BETWEEN ERRORS========\n";
-	auto it_prev = *std::find_if(logs.begin(), logs.end(), [](const auto& a) { return (a.level == Level::Error); });
-
-	int accum = std::accumulate(logs.begin(), logs.end(), 0, [&](auto& acc, const auto& it) {
-		if (it.level == Level::Error && it != it_prev) {
-			acc += (it.time.get_int() - it_prev.time.get_int());
-			it_prev = it;
-			return acc;
-		}
-		return acc;
-	});
+	newest_line(logs);
+	oldest_line(logs);
 	
-	std::cout << accum/(levels[Level::Error] - 1) << '\n';
-
-
-	std::cout << "\n=========THE MOST SEND MESSAGE========\n";
-	auto it_max = std::max_element(messages.begin(), messages.end(), [](const auto& a, const auto& b) { return a.second < b.second; });
-
-	std::cout << it_max->first << ": " << it_max->second << "\n\n";	
+	interval_between_errors(logs, levels);
+	most_send_message(messages);
+	
 
 	
 	return 0;

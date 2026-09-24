@@ -11,7 +11,7 @@
 2026-09-11 10:28:50 INFO  database  Query executed in 49ms
 2026-09-11 10:29:30 INFO  cache     Cache miss for key user:2963
 2026-09-11 10:32:17 INFO  server    Request handled in 341ms
-2026-09-11 10:33:35 ERROR server      Too many failed attempts, user 1908 locked
+2026-09-11 10:33:35 ERROR auth      Too many failed attempts, user 1908 locked
 2026-09-11 10:37:36 INFO  server    Request handled in 328ms
 2026-09-11 10:41:29 INFO  database  Query executed in 27ms
 2026-09-11 10:44:40 ERROR server    Returned status 500 for /api/v3/payments
@@ -22,3 +22,399 @@
 2026-09-11 10:57:16 INFO  database  Query executed in 28ms
 2026-09-11 11:01:29 INFO  scheduler Job 162 finished in 218s
 2026-09-11 11:04:36 ERROR database  Connection timeout after 46s
+    at db::Connection::open (connection.cpp:214)
+    at db::Pool::acquire (pool.cpp:88)
+    at main (main.cpp:31)
+2026-09-11 11:06:53 INFO  server    Request handled in 384ms
+2026-09-11 11:09:36 INFO  cache     Cache miss for key user:3510
+2026-09-11 11:13:45 INFO  cache     Cache hit ratio 68%
+2026-09-11 11:16:15 WARN  database  Slow query detected: 4327ms
+2026-09-11 11:17:03 INFO  server    Request handled in 351ms
+2026-09-11 11:19:11 INFO  cache     Cache hit ratio 98%
+2026-09-11 11:21:30 INFO  cache     Cache miss for key user:95
+2026-09-11 11:24:44 INFO  auth      User 4399 logged in
+2026-09-11 11:28:16 INFO  server    Request handled in 60ms
+2026-09-11 11:29:51 INFO  database  Query executed in 34ms
+2026-09-11 11:32:19 INFO  auth      User 872 logged in
+2026-09-11 11:36:21 INFO  cache     Cache miss for key user:4159
+2026-09-11 11:39:16 INFO  server    Request handled in 85ms
+2026-09-11 11:41:54 ERROR mailer    SMTP connection refused
+2026-09-11 11:46:09 INFO  server    Request handled in 12ms
+2026-09-11 11:46:57 INFO  scheduler Job 158 finished in 246s
+2026-09-11 11:47:31 INFO  server    Request handled in 43ms
+2026-09-11 12:40:02 info  cache Cache hit ratio 87%
+2026-09-11 11:48:12 WARN  auth      Failed login attempt for user 4364
+2026-09-11 11:51:48 INFO  server    Request handled in 284ms
+2026-09-11 11:52:50 WARN  server    Returned status 429 for /api/v2/orders
+2026-09-11 11:54:04 INFO  scheduler Job 103 finished in 320s
+2026-09-11 11:56:06 INFO  storage   Backup completed in 478s
+2026-09-11 12:00:52 INFO  database  Query executed in 30ms
+2026-09-11 12:00:16 INFO  database  Query executed in 29ms
+2026-09-11 12:03:42 INFO  server    Request handled in 326ms
+2026-09-11 12:04:17 WARN  server    Returned status 429 for /api/v2/orders
+2026-09-11 12:04:55 INFO  database  Query executed in 63ms
+2026-09-11 12:06:09 WARN  cache     Eviction rate above threshold
+2026-09-11 12:10:14 INFO  cache     Cache hit ratio 90%
+2026-09-11 12:14:00 INFO  database  Query executed in 85ms
+2026-09-11 12:16:10 INFO  database  Query executed in 7ms
+2026-09-11 12:19:22 WARN  cache     Eviction rate above threshold
+2026-09-11 12:19:57 INFO  database  Query executed in 14ms
+2026-09-11 12:21:20 INFO  server    Request handled in 74ms
+2026-09-11 12:23:28 INFO  server    Request handled in 450ms
+2026-09-11 12:27:44 INFO  server    Returned status 200 for /api/v3/users
+2026-09-11 12:28:29 WARN  server    Worker 1 restarted
+2026-09-11 12:29:12 INFO  scheduler Job 86 finished in 417s
+2026-09-11 18:44:12 INFO  scheduler
+2026-09-11 12:31:36 WARN  database  Slow query detected: 4496ms
+2026-09-11 12:32:11 INFO  server    Request handled in 202ms
+   
+2026-09-11 12:33:38 INFO  scheduler Job 147 finished in 434s
+2026-09-11 12:36:56 ERROR mailer    SMTP connection refused
+2026-09-11 12:39:38 INFO  cache     Cache hit ratio 72%
+2026-09-11 12:41:13 INFO  server    Request handled in 379ms
+2026-09-11 12:43:51 INFO  server    Request handled in 28ms
+2026-09-11 12:46:40 ERROR database  Connection timeout after 38s
+2026-09-11 12:47:40 INFO  server    Request handled in 438ms
+2026-09-11 12:48:47 INFO  server    Request handled in 444ms
+2026-09-11 12:50:07 WARN  database  Connection pool usage high: 49/50
+2026-09-11 12:51:30 INFO  cache     Cache hit ratio 65%
+2026-09-11 12:53:37 WARN  cache     Eviction rate above threshold
+2026-09-11 12:55:17 INFO  scheduler Job 161 started
+2026-09-11 12:56:38 INFO  server    Request handled in 333ms
+2026-09-11 12:58:14 ERROR database  Connection timeout after 9s
+2026-09-11 12:58:36 WARN  database  Connection pool usage high: 45/50
+2026-09-11 12:59:14 INFO  cache     Cache hit ratio 68%
+2026-09-11 13:03:32 INFO  database  Query executed in 32ms
+2026-09-11 13:08:46 WARN  database  Connection pool usage high: 50/50
+2026-09-11 13:05:26 INFO  server    Request handled in 281ms
+2026-09-11 13:11:21 INFO  server    Returned status 200 for /api/v2/users
+2026-09-11 13:15:39 INFO  cache     Cache miss for key user:1101
+2026-09-11 13:17:06 INFO  server    Request handled in 286ms
+2026-09-11 13:18:05 INFO  server    Request handled in 370ms
+2026-09-11 13:19:52 INFO  server    Request handled in 138ms
+2026-09-11 13:22:21 ERROR database  Connection timeout after 59s
+2026-09-11 13:22:54 INFO  server    Request handled in 144ms
+2026-09-11 13:23:25 INFO  server    Returned status 200 for /api/v3/users
+2026-09-11 13:24:52 INFO  server    Request handled in 364ms
+2026-09-11 13:27:01 INFO  cache     Cache hit ratio 69%
+2026-09-11 13:29:40 INFO  server    Request handled in 285ms
+2026-09-11 13:30:37 INFO  database  Query executed in 47ms
+2026-09-11 13:34:47 ERROR scheduler Job 21 failed: exit code 3
+2026-09-11 13:36:00 INFO  auth      User 2898 logged in
+2026-09-11 13:39:39 INFO  cache     Cache miss for key user:1267
+2026-09-11 13:43:55 INFO  scheduler Job 91 finished in 423s
+2026-09-11 13:44:21 WARN  server    Returned status 429 for /api/v2/orders
+2026-09-11 13:48:06 INFO  cache     Cache miss for key user:2033
+2026-09-11 13:49:34 INFO  server    Request handled in 198ms
+2026-09-11 13:53:37 INFO  server    Request handled in 105ms
+2026-09-11 13:57:26 INFO  scheduler Job 117 started
+2026-09-11 13:58:43 INFO  server    Request handled in 171ms
+2026-09-11 14:00:14 ERROR payments  Gateway timeout after 45s
+2026-09-11 14:02:03 INFO  cache     Cache hit ratio 94%
+2026-09-11 14:03:47 INFO  scheduler Job 134 started
+2026-09-11 14:04:52 INFO  cache     Cache miss for key user:314
+2026-09-11 14:05:39 INFO  cache     Cache hit ratio 80%
+2026-09-11 14:07:50 INFO  cache     Cache hit ratio 84%
+2026-09-11 14:12:09 WARN  database  Connection pool usage high: 50/50
+2026-09-11 14:12:35 ERROR database  Connection timeout after 44s
+2026-09-11 14:13:00 ERROR payments  Gateway timeout after 25s
+2026-09-11 14:13:24 ERROR database  Connection timeout after 37s
+2026-09-11 14:13:48 ERROR database  Connection timeout after 47s
+2026-09-11 14:14:19 ERROR server    Returned status 500 for /api/v2/payments
+2026-09-11 14:14:44 ERROR payments  Gateway timeout after 61s
+2026-09-11 14:15:07 WARN  database  Connection pool usage high: 50/50
+2026-09-11 14:15:47 ERROR database  Connection timeout after 13s
+2026-09-11 14:16:04 ERROR database  Connection timeout after 31s
+2026-09-11 14:16:33 ERROR database  Connection timeout after 48s
+2026-09-11 14:16:49 ERROR payments  Gateway timeout after 88s
+2026-09-11 14:19:34 INFO  database  Query executed in 1ms
+2026-09-11 14:21:11 INFO  server    Request handled in 299ms
+2026-09-11 14:24:06 INFO  cache     Cache hit ratio 88%
+2026-09-11 14:27:18 INFO  server    Request handled in 464ms
+2026-09-11 14:31:01 INFO  auth      User 2325 logged in
+2026-09-11 14:33:32 WARN  cache     Eviction rate above threshold
+2026-09-11 14:34:15 WARN  payments  Payment 98184 declined: insufficient funds
+2026-09-11 14:35:54 INFO  server    Request handled in 15ms
+2026-09-11 14:36:25 INFO  server    Request handled in 438ms
+2026-09-11 14:40:01 INFO  server    Request handled in 325ms
+2026-09-11 14:42:48 INFO  server    Request handled in 256ms
+2026-09-11 14:44:50 INFO  server    Request handled in 5ms
+2026-09-11 14:48:58 WARN  auth      Failed login attempt for user 874
+2026-09-11 14:52:37 INFO  database  Query executed in 90ms
+2026-09-11 14:55:09 INFO  database  Query executed in 16ms
+2026-09-11 14:57:25 INFO  server    Request handled in 274ms
+2026-09-11 14:57:25 INFO  cache     Cache miss for key user:3626
+2026-09-11 15:03:04 WARN  payments  Payment 65933 declined: insufficient funds
+2026-09-11 15:06:56 INFO  scheduler Job 82 started
+2026-09-11 15:10:26 INFO  payments  Payment 42406 processed
+2026-09-11 15:14:21 INFO  cache     Cache miss for key user:4271
+2026-09-11 15:16:45 INFO  cache     Cache hit ratio 64%
+2026-09-11 15:20:07 INFO  server    Request handled in 166ms
+2026-09-11 15:24:15 INFO  cache     Cache hit ratio 74%
+2026-09-11 15:26:13 INFO  auth      User 527 logged in
+2026-09-11 15:28:19 INFO  database  Query executed in 54ms
+2026-09-11 15:28:54 INFO  server    Request handled in 466ms
+2026-09-11 15:32:31 WARN  cache     Eviction rate above threshold
+2026-09-11 15:36:30 INFO  payments  Payment 72518 processed
+2026-09-11 15:36:51 INFO  scheduler Job 200 started
+2026-09-11 15:40:49 INFO  scheduler Job 276 finished in 560s
+2026-13-11 13:15:44 WARN  storage Disk usage at 91%
+2026-09-11 15:44:33 INFO  cache     Cache hit ratio 74%
+2026-09-11 15:46:02 INFO  database  Query executed in 44ms
+2026-09-11 15:49:13 INFO  cache     Cache hit ratio 70%
+2026-09-11 15:53:08 INFO  database  Query executed in 80ms
+2026-09-11 15:55:44 INFO  server    Request handled in 291ms
+2026-09-11 15:58:53 INFO  server    Request handled in 72ms
+2026-09-11 16:02:54 INFO  database  Query executed in 49ms
+2026-09-11 16:04:37 INFO  server    Request handled in 392ms
+2026-09-11 16:08:42 WARN  database  Slow query detected: 4207ms
+2026-09-11 18:20:45 ERROR
+2026-09-11 16:10:49 INFO  server    Request handled in 12ms
+2026-09-11 16:14:20 INFO  cache     Cache miss for key user:2867
+2026-09-11 16:15:37 INFO  cache     Cache miss for key user:330
+2026-09-11 16:19:10 INFO  server    Request handled in 432ms
+2026-09-11 16:19:35 INFO  cache     Cache hit ratio 90%
+2026-09-11 16:22:46 ERROR server    Returned status 500 for /api/v2/payments
+2026-09-11 16:26:05 INFO  server    Request handled in 313ms
+2026-09-11 16:29:00 INFO  mailer    Sent 399 emails
+2026-09-11 16:32:49 INFO  server    Request handled in 299ms
+2026-09-11 16:33:15 INFO  scheduler Job 193 finished in 407s
+2026-09-11 16:36:38 INFO  server    Request handled in 428ms
+2026-09-11 16:39:38 INFO  server    Request handled in 157ms
+2026-09-11 16:47:15 INFO  server    Request handled in 341ms
+2026-09-11 16:43:35 WARN  auth      Failed login attempt for user 4637
+2026-09-11 16:49:09 INFO  server    Request handled in 9ms
+2026-09-11 16:53:06 INFO  database  Query executed in 56ms
+2026-09-11 16:54:58 INFO  cache     Cache miss for key user:1254
+2026-09-11 16:57:09 INFO  server    Request handled in 336ms
+2026-09-11 16:58:38 INFO  cache     Cache miss for key user:3961
+2026-09-11 17:00:57 WARN  database  Slow query detected: 1899ms
+2026-09-11 17:02:39 WARN  payments  Payment 21359 declined: insufficient funds
+2026-09-11 17:04:10 INFO  payments  Payment 70910 processed
+2026-09-11 17:06:55 INFO  cache     Cache hit ratio 61%
+2026-09-11 17:09:21 INFO  payments  Payment 37802 processed
+2026-09-11 25:10:00 INFO  mailer Sent 120 emails
+2026-09-11 17:11:11 INFO  auth      User 4884 logged in
+2026-09-11 17:14:30 INFO  payments  Payment 77715 processed
+2026-09-11 17:15:38 INFO  server    Request handled in 253ms
+2026-09-11 17:18:20 INFO  auth      User 4021 logged in
+2026-09-11 17:20:34 INFO  auth      User 1816 logged in
+2026-09-11 17:22:37 INFO  auth      User 4765 logged in
+2026-09-11 17:24:31 INFO  database  Query executed in 55ms
+2026-09-11 17:28:01 INFO  cache     Cache hit ratio 89%
+2026-09-11 17:29:30 INFO  database  Query executed in 25ms
+2026-09-11 17:31:10 INFO  server    Request handled in 393ms
+2026-09-11 17:34:26 INFO  server    Request handled in 250ms
+
+2026-09-11 17:35:56 ERROR auth      Too many failed attempts, user 4298 locked
+2026-09-11 17:38:48 INFO  server    Request handled in 102ms
+2026-09-11 17:40:23 INFO  server    Request handled in 10ms
+2026-09-11 17:43:44 INFO  cache     Cache hit ratio 63%
+2026-09-11 17:46:25 ERROR server    Returned status 500 for /api/v3/payments
+2026-09-11 17:50:27 INFO  auth      User 101 logged in
+2026-09-11 17:53:13 INFO  server    Request handled in 177ms
+2026-09-11 17:54:20 INFO  mailer    Sent 442 emails
+2026-09-11 17:56:42 INFO  server    Request handled in 254ms
+2026-09-11 17:57:20 WARN  cache     Eviction rate above threshold
+2026-09-11 17:58:18 INFO  server    Request handled in 158ms
+2026-09-11 17:58:59 WARN  storage   Disk usage at 97%
+2026-09-11 18:01:05 INFO  cache     Cache miss for key user:1849
+2026-09-11 18:04:43 INFO  cache     Cache hit ratio 88%
+2026-09-11 18:06:19 ERROR payments  Gateway timeout after 49s
+2026-09-11 18:09:04 WARN  cache     Eviction rate above threshold
+2026-09-11 18:12:33 INFO  server    Returned status 200 for /api/v3/users
+2026-09-11 18:13:47 INFO  server    Request handled in 125ms
+2026-09-11 18:14:51 INFO  cache     Cache hit ratio 86%
+2026-09-11 18:17:06 INFO  auth      User 268 logged in
+2026-09-11 18:18:25 INFO  server    Request handled in 443ms
+2026-09-11 18:20:41 INFO  server    Request handled in 138ms
+2026-09-11 18:24:22 INFO  auth      User 1621 logged in
+2026-09-11 18:26:30 INFO  server    Request handled in 79ms
+2026-09-11 18:30:42 INFO  server    Request handled in 33ms
+2026-09-11 18:31:44 INFO  auth      User 4663 logged in
+2026-09-11 18:35:59 INFO  server    Request handled in 355ms
+2026-09-11 18:37:36 WARN  auth      Failed login attempt for user 4100
+2026-09-11 18:40:14 INFO  database  Query executed in 6ms
+2026-09-11 18:44:21 INFO  database  Query executed in 33ms
+2026-09-11 18:44:47 ERROR server    Returned status 500 for /api/v3/payments
+2026-09-11 18:47:37 ERROR mailer    SMTP connection refused
+2026-09-11 18:50:49 INFO  payments  Payment 32962 processed
+2026-09-11 18:53:09 INFO  database  Query executed in 36ms
+2026-09-11 18:54:15 WARN  storage   Disk usage at 92%
+2026-09-11 18:54:58 INFO  database  Query executed in 42ms
+2026-09-11 18:58:09 INFO  server    Request handled in 213ms
+2026-09-11 19:01:26 INFO  database  Query executed in 52ms
+2026-09-11 19:05:14 INFO  auth      User 722 logged in
+2026-09-11 19:06:54 INFO  server    Request handled in 398ms
+2026-09-11 19:08:57 WARN  payments  Payment 10150 declined: insufficient funds
+2026-09-11 19:12:05 INFO  payments  Payment 17104 processed
+2026-09-11 19:13:13 INFO  database  Query executed in 64ms
+2026-09-11 19:16:13 INFO  database  Query executed in 35ms
+2026-09-11 19:18:53 INFO  server    Request handled in 453ms
+2026-09-11 19:22:11 INFO  database  Query executed in 81ms
+2026-09-11 19:25:06 INFO  auth      User 2546 logged in
+2026-09-11 19:27:47 INFO  server    Request handled in 118ms
+2026-09-11 19:31:42 INFO  scheduler Job 61 finished in 158s
+2026-09-11 19:34:09 INFO  scheduler Job 140 started
+2026-09-11 19:36:15 ERROR payments  Gateway timeout after 41s
+2026-09-11 19:38:31 INFO  cache     Cache hit ratio 98%
+2026-09-11 19:41:01 INFO  auth      User 572 logged in
+2026-09-11 19:42:31 WARN  auth      Failed login attempt for user 2785
+2026-09-11 19:46:50 INFO  auth      User 22 logged in
+2026-09-11 19:48:22 WARN  auth      Failed login attempt for user 4751
+2026-09-11 19:51:30 INFO  database  Query executed in 69ms
+2026-09-11 19:53:53 INFO  database  Query executed in 70ms
+2026-09-11 19:55:49 INFO  database  Query executed in 25ms
+2026-09-11 19:59:07 INFO  server    Request handled in 441ms
+2026-09-11 20:02:45 INFO  database  Query executed in 61ms
+2026-09-11 20:06:05 INFO  scheduler Job 78 started
+2026-09-11 20:08:31 INFO  mailer    Sent 495 emails
+2026-09-11 20:11:22 INFO  database  Query executed in 57ms
+2026-09-11 20:12:07 INFO  cache     Cache hit ratio 69%
+2026-09-11 20:14:11 ERROR payments  Gateway timeout after 19s
+2026-09-11 20:16:31 INFO  auth      User 3257 logged in
+2026-09-11 20:19:37 INFO  server    Request handled in 348ms
+2026-09-11 20:23:36 INFO  cache     Cache miss for key user:3998
+2026-09-11 20:27:39 WARN  cache     Eviction rate above threshold
+2026-09-11 20:28:59 INFO  cache     Cache miss for key user:1864
+2026-09-11 20:32:30 WARN  server    Worker 4 restarted
+2026-09-11 20:34:43 INFO  server    Request handled in 17ms
+2026-09-11 20:35:14 INFO  database  Query executed in 46ms
+2026-09-11 20:37:09 INFO  database  Query executed in 53ms
+2026-09-11 20:39:53 INFO  auth      User 1435 logged in
+2026-09-11 20:40:33 INFO  cache     Cache hit ratio 75%
+2026-09-11 20:43:00 INFO  scheduler Job 237 started
+2026-09-11 20:46:03 INFO  server    Request handled in 7ms
+2026-09-11 20:50:13 WARN  payments  Payment 98815 declined: insufficient funds
+2026-09-11 20:52:52 INFO  server    Request handled in 179ms
+2026-09-11 20:55:42 ERROR server    Returned status 500 for /api/v3/payments
+2026/09/11 15:02:19 INFO  server Request handled in 44ms
+2026-09-11 20:57:06 INFO  database  Query executed in 50ms
+2026-09-11 21:01:04 INFO  database  Query executed in 74ms
+2026-09-11 21:02:55 INFO  cache     Cache miss for key user:2419
+2026-09-11 21:03:20 INFO  mailer    Sent 141 emails
+2026-09-11 21:03:42 WARN  cache     Eviction rate above threshold
+2026-09-11 21:07:12 ERROR mailer    SMTP connection refused
+2026-09-11 21:10:42 ERROR database  Connection timeout after 23s
+2026-09-11 21:14:20 INFO  auth      User 2887 logged in
+2026-09-11 21:15:36 WARN  cache     Eviction rate above threshold
+2026-09-11 21:18:49 WARN  auth      Failed login attempt for user 1121
+2026-09-11 21:21:49 INFO  server    Request handled in 23ms
+2026-09-11 21:23:28 INFO  auth      User 2989 logged in
+2026-09-11 21:26:55 WARN  server    Returned status 429 for /api/v2/orders
+2026-09-11 21:30:26 INFO  database  Query executed in 70ms
+2026-09-11 21:34:30 INFO  mailer    Sent 468 emails
+2026-09-11 21:35:59 INFO  payments  Payment 73156 processed
+2026-09-11 21:39:45 WARN  server    Returned status 429 for /api/v1/orders
+2026-09-11 21:42:04 INFO  mailer    Sent 495 emails
+2026-09-11 21:43:21 INFO  payments  Payment 62089 processed
+2026-09-11 21:47:17 INFO  payments  Payment 61717 processed
+2026-09-11 11:42:10 database Connection pool usage high: 50/50
+2026-09-11 21:47:40 INFO  server    Request handled in 191ms
+2026-09-11 21:50:52 INFO  auth      User 3122 logged in
+2026-09-11 21:54:42 INFO  cache     Cache hit ratio 74%
+2026-09-11 21:58:45 INFO  scheduler Job 33 started
+2026-09-11 21:57:02 WARN  server    Returned status 429 for /api/v3/orders
+2026-09-11 22:01:47 WARN  payments  Payment 49608 declined: insufficient funds
+2026-09-11 22:04:53 INFO  database  Query executed in 5ms
+2026-09-11 22:06:30 WARN  storage   Disk usage at 88%
+2026-09-11 22:10:37 INFO  cache     Cache hit ratio 83%
+2026-09-11 22:13:48 INFO  scheduler Job 277 finished in 430s
+2026-09-11 22:16:38 INFO  auth      User 3399 logged in
+2026-09-11 22:19:45 INFO  server    Request handled in 211ms
+2026-09-11 22:24:05 INFO  mailer    Sent 190 emails
+2026-09-11 22:26:05 WARN  storage   Disk usage at 95%
+2026-09-11 22:25:20 WARN  database  Connection pool usage high: 47/50
+2026-09-11 22:27:56 INFO  server    Request handled in 65ms
+2026-09-11 22:31:53 INFO  payments  Payment 37801 processed
+2026-09-11 22:34:57 INFO  cache     Cache miss for key user:415
+2026-09-11 22:38:38 WARN  database  Connection pool usage high: 49/50
+2026-09-11 22:39:50 INFO  server    Returned status 200 for /api/v1/users
+2026-09-11 16:61:07 WARN  auth Failed login attempt for user 77
+2026-09-11 22:42:40 WARN  server    Returned status 429 for /api/v2/orders
+2026-09-11 22:46:18 WARN  server    Returned status 429 for /api/v1/orders
+2026-09-11 22:47:48 INFO  payments  Payment 27038 processed
+2026-09-11 22:50:26 INFO  server    Request handled in 341ms
+2026-09-11 22:54:27 INFO  server    Request handled in 407ms
+2026-09-11 22:58:08 INFO  server    Request handled in 92ms
+2026-09-11 22:59:35 INFO  server    Returned status 200 for /api/v3/users
+2026-09-11 23:00:24 INFO  auth      User 2966 logged in
+2026-09-11 23:02:55 INFO  cache     Cache hit ratio 74%
+2026-09-11 23:05:52 INFO  server    Returned status 200 for /api/v3/users
+2026-09-11 23:08:25 INFO  database  Query executed in 4ms
+Segmentation fault (core dumped)
+2026-09-11 23:09:00 INFO  storage   Backup completed in 466s
+2026-09-11 23:12:15 INFO  server    Request handled in 230ms
+2026-09-11 23:12:53 INFO  scheduler Job 76 started
+2026-09-11 23:13:29 INFO  server    Request handled in 302ms
+2026-09-11 23:16:09 INFO  auth      User 4894 logged in
+2026-09-11 23:18:44 INFO  server    Request handled in 223ms
+
+2026-09-11 23:19:29 INFO  auth      User 4517 logged in
+2026-09-11 23:22:53 INFO  payments  Payment 39949 processed
+2026-09-11 23:24:58 INFO  database  Query executed in 54ms
+2026-09-11 23:28:24 INFO  server    Request handled in 343ms
+2026-09-11 23:30:26 INFO  server    Request handled in 224ms
+2026-09-11 23:29:49 INFO  database  Query executed in 61ms
+2026-09-11 23:31:10 INFO  auth      User 1066 logged in
+2026-09-11 23:33:52 ERROR server    Returned status 500 for /api/v3/payments
+--- log rotated ---
+2026-09-11 23:35:36 INFO  cache     Cache hit ratio 87%
+2026-09-11 23:39:38 INFO  scheduler Job 148 started
+2026-09-11 23:42:31 INFO  database  Query executed in 65ms
+2026-09-11 23:43:45 INFO  server    Request handled in 436ms
+2026-09-11 23:44:32 INFO  database  Query executed in 15ms
+2026-09-11 23:48:07 INFO  server    Request handled in 222ms
+2026-09-11 23:52:03 INFO  cache     Cache miss for key user:4561
+2026-09-11 23:52:29 WARN  cache     Eviction rate above threshold
+2026-09-11 23:55:46 INFO  server    Request handled in 362ms
+2026-09-11 23:59:21 INFO  database  Query executed in 1ms
+
+2026-09-11 12:05:33 ERRROR auth Failed login attempt for user 1042
+2026-09-12 00:00:27 INFO  payments  Payment 62531 processed
+2026-09-12 00:01:04 INFO  server    Request handled in 18ms
+2026-09-12 00:01:47 INFO  auth      User 3440 logged in
+2026-09-12 00:04:03 INFO  database  Query executed in 42ms
+2026-09-12 00:07:41 INFO  scheduler Job 27 finished in 160s
+2026-09-12 00:08:41 INFO  auth      User 669 logged in
+11-09-2026 20:14:55 INFO  server Request handled in 8ms
+2026-09-12 00:10:10 INFO  database  Query executed in 78ms
+2026-09-12 00:12:23 INFO  database  Query executed in 66ms
+2026-09-12 00:13:12 INFO  database  Query executed in 87ms
+2026-09-12 00:16:25 INFO  cache     Cache hit ratio 79%
+2026-09-12 00:16:56 WARN  server    Worker 2 restarted
+2026-09-12 00:17:17 ERROR server    Returned status 500 for /api/v1/payments
+2026-09-12 00:20:52 INFO  server    Request handled in 6ms
+2026-09-12 00:23:19 INFO  auth      User 3115 logged in
+2026-09-12 00:25:55 INFO  auth      User 2902 logged in
+2026-09-12 00:26:33 WARN  database  Slow query detected: 2586ms
+2026-09-12 00:26:57 INFO  database  Query executed in 41ms
+2026-09-12 00:29:44 INFO  database  Query executed in 82ms
+2026-09-12 00:31:50 INFO  server    Request handled in 169ms
+2026-09-12 00:32:53 INFO  payments  Payment 57428 processed
+2026-09-12 00:33:35 INFO  database  Query executed in 56ms
+2026-09-12 00:36:25 INFO  database  Query executed in 40ms
+2026-09-12 00:39:55 INFO  database  Query executed in 22ms
+2026-09-12 00:40:34 INFO  database  Query executed in 66ms
+2026-09-12 00:41:43 INFO  scheduler Job 76 started
+2026-09-12 00:41:43 INFO  server    Request handled in 91ms
+2026-09-12 00:45:57 INFO  server    Returned status 200 for /api/v1/users
+2026-09-12 00:47:02 INFO  mailer    Sent 238 emails
+2026-09-12 00:50:35 WARN  cache     Eviction rate above threshold
+2026-09-12 00:53:49 INFO  scheduler Job 166 finished in 324s
+2026-09-12 00:54:47 INFO  database  Query executed in 81ms
+2026-09-12 00:56:24 INFO  auth      User 2884 logged in
+2026-09-12 00:58:53 INFO  server    Request handled in 22ms
+2026-09-12 00:59:27 INFO  database  Query executed in 83ms
+2026-09-12 01:03:28 INFO  mailer    Sent 305 emails
+2026-09-12 01:05:57 INFO  database  Query executed in 6ms
+2026-09-12 01:08:12 INFO  scheduler Job 97 finished in 330s
+2026-09-11 17:3
+2026-09-12 01:11:06 INFO  database  Query executed in 8ms
+2026-09-12 01:13:21 WARN  server    Returned status 429 for /api/v2/orders
+2026-09-12 01:16:43 INFO  server    Request handled in 23ms
+2026-09-12 01:18:06 ERROR auth      Too many failed attempts, user 4294 locked
+2026-09-12 01:20:39 INFO  cache     Cache hit ratio 78%
+2026-09-12 01:24:55 INFO  server    Request handled in 148ms
+2026-09-12 01:23:11 INFO  auth      User 540 logged in
+2026-09-12 01:22:38 INFO  database  Query executed in 77ms
