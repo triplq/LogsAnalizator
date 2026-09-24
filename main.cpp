@@ -3,7 +3,10 @@
 #include <functional>
 #include <iostream>
 #include <iterator>
+#include <numeric>
 #include <stdexcept>
+#include <string>
+#include <string_view>
 #include <unordered_map>
 #include "logentry.h"
 
@@ -12,6 +15,7 @@ int main() {
 	size_t counter = 0;
 	std::unordered_map<Level, size_t> levels;
 	std::unordered_map<std::string, size_t> subsystems;
+	std::unordered_map<std::string, size_t> messages;
 
 	std::string line;
 
@@ -24,6 +28,10 @@ int main() {
 				levels[logs[logs.size()-1].level]++;
 
 				subsystems[logs[logs.size()-1].subsystem]++;
+
+				std::string str = logs[logs.size()-1].message;
+				str.erase(std::remove_if(str.begin(), str.end(), [](const unsigned char& ch) { return std::isdigit(ch); }), str.end());
+				messages[str]++;
 			} catch (std::invalid_argument) {
 				counter++;
 			}
@@ -32,12 +40,7 @@ int main() {
 	in.close();
 
 	std::vector<std::pair<std::string, size_t>> subsystems_vector {std::make_move_iterator(subsystems.begin()), std::make_move_iterator(subsystems.end())};
-
 	std::partial_sort(subsystems_vector.begin(), subsystems_vector.begin() + 5, subsystems_vector.end(), [](const auto& a, const auto& b){ return a.second > b.second; });
-	
-	auto it_max = std::max_element(logs.begin(), logs.end(), [](const auto& a, const auto& b){ return a.time > b.time && a.date >= b.date; });
-	auto it_min = std::max_element(logs.begin(), logs.end(), [](const auto& a, const auto& b){ return a.time < b.time && a.date <= b.date; });
-
 	subsystems_vector.resize(5);
 	subsystems_vector.shrink_to_fit();
 
@@ -65,11 +68,48 @@ int main() {
 		std::cout << key << ' ' << val << '\n';
 	}
 
+
 	std::cout << "\n=========THE OLDEST LINE========\n";
-	std::cout << *it_max << '\n';
+	auto it_old = std::max_element(logs.begin(), logs.end(), [](const auto& a, const auto& b){ return a.time > b.time && a.date >= b.date; });
+	std::cout << *it_old << '\n';
 
 	std::cout << "\n=========THE NEWEST LINE========\n";
-	std::cout << *it_min << '\n';
+	auto it_new = std::max_element(logs.begin(), logs.end(), [](const auto& a, const auto& b){ return a.time < b.time && a.date <= b.date; });
+	std::cout << *it_new << '\n';
+
+
+	// std::cout << "\n=========ALL LOGS AT X HOUR========\n";
+	// int hour;
+	// std::cout << "ENTER AN HOUR: ";
+	// std::cin >> hour;
+
+	// auto it_hour = logs.begin();
+	// while ((it_hour = std::find_if(it_hour, logs.end(), [&](const auto& a){ return a.time.get_hours() == hour; })) != logs.end()) {
+	// 	std::cout << *it_hour << '\n';
+	// 	it_hour++;
+	// }
+
+
+	std::cout << "\n=========AVERAGE INTERVAL BETWEEN ERRORS========\n";
+	auto it_prev = *std::find_if(logs.begin(), logs.end(), [](const auto& a) { return (a.level == Level::Error); });
+
+	int accum = std::accumulate(logs.begin(), logs.end(), 0, [&](auto& acc, const auto& it) {
+		if (it.level == Level::Error && it != it_prev) {
+			acc += (it.time.get_int() - it_prev.time.get_int());
+			it_prev = it;
+			return acc;
+		}
+		return acc;
+	});
+	
+	std::cout << accum/(levels[Level::Error] - 1) << '\n';
+
+
+	std::cout << "\n=========THE MOST SEND MESSAGE========\n";
+	auto it_max = std::max_element(messages.begin(), messages.end(), [](const auto& a, const auto& b) { return a.second < b.second; });
+
+	std::cout << it_max->first << ": " << it_max->second << '\n';	
+
 	
 	return 0;
 }

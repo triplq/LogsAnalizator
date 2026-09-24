@@ -13,6 +13,8 @@ struct LogEntry {
 	std::string message;
 
 	explicit LogEntry(std::string_view str);
+
+	bool operator!= (const LogEntry& other) const;
 };
 
 std::ostream& operator<<(std::ostream& stream, const LogEntry& log);

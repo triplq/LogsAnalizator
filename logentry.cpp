@@ -51,6 +51,10 @@ LogEntry::LogEntry(std::string_view str) {
 	}
 }
 
+bool LogEntry::operator!= (const LogEntry& other) const {
+	return (message != other.message || subsystem != other.subsystem || level != other.level || time != other.time || date != other.date);
+}
+
 std::ostream& operator<<(std::ostream& stream, const LogEntry& log) {
 	std::string level;
 	switch (log.level) {
