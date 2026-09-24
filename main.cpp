@@ -10,7 +10,57 @@
 #include <unordered_map>
 #include "logentry.h"
 
-int main() {
+int main(int argc, char* argv[]) {
+	std::vector<std::function<bool(const LogEntry&)>> filters;
+	for (size_t i = 1; i < argc; i++) {
+		std::string arg = argv[i];
+		
+		if (arg.find("--") != 0) {
+			continue;
+		}
+
+		auto pos = arg.find("=");
+		if (pos == std::string::npos) {
+			continue;
+		}
+
+		std::string key = arg.substr(2, pos - 2);
+		std::string value = arg.substr(pos + 1);
+
+		if (key == "level") {
+			if (value != "ERROR" || value != "WARN" || value != "INFO") {
+				throw std::invalid_argument("Incorrect --level=flag");
+				filters.push_back([value](const LogEntry& p){
+					if (value == "ERROR")
+						return p.level == Level::Error;
+					if (value == "INFO") 
+						return p.level == Level::Info;
+					if (value == "WARN")
+						return p.level == Level::Warn;
+				});
+			}
+		}
+
+		if (key == "subsystem") {
+			filters.push_back([value](const LogEntry& p){
+				return p.subsystem == value;
+			});
+		}
+
+		if (key == "after") {
+			filters.push_back([value](const LogEntry& p){
+				return p.time.get_int() > (std::stoi(value.substr(0, 2)) * 60 * 60) + (std::stoi(value.substr(3, 2)) * 60);
+			});
+		}
+
+		if (key == "contains") {
+			filters.push_back([value](const LogEntry& p){
+				return p.message.find(value);
+			});
+		}
+	}
+
+
 	std::vector<LogEntry> logs;
 	size_t counter = 0;
 	std::unordered_map<Level, size_t> levels;
