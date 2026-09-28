@@ -7,12 +7,12 @@
 #include <string>
 #include <string_view>
 #include <unordered_map>
-#include "logentry.h"
-#include "stats.h"
+#include "logentry.hpp"
+#include "stats.hpp"
 
 int main(int argc, char* argv[]) {
 	std::vector<std::function<bool(const LogEntry&)>> filters;
-	for (size_t i = 1; i < argc; i++) {
+	for (size_t i = 1; i < static_cast<size_t>(argc); i++) {
 		std::string arg = argv[i];
 		
 		if (arg.find("--") != 0) {
@@ -35,10 +35,11 @@ int main(int argc, char* argv[]) {
 				filters.push_back([value](const LogEntry& p){
 					if (value == "ERROR")
 						return p.level == Level::Error;
-					if (value == "INFO") 
+					else if (value == "INFO") 
 						return p.level == Level::Info;
-					if (value == "WARN")
+					else
 						return p.level == Level::Warn;
+
 				});
 			}
 		}
@@ -51,7 +52,7 @@ int main(int argc, char* argv[]) {
 
 		if (key == "after") {
 			filters.push_back([value](const LogEntry& p){
-				return p.time.get_int() > (std::stoi(value.substr(0, 2)) * 60 * 60) + (std::stoi(value.substr(3, 2)) * 60);
+				return (p.time.get_int()) > static_cast<unsigned int>(std::stoi(value.substr(0, 2)) * 60 * 60) + (std::stoi(value.substr(3, 2)) * 60);
 			});
 		}
 

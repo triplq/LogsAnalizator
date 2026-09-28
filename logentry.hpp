@@ -1,9 +1,9 @@
 #pragma once
 
 #include <string>
-#include "time.h"
-#include "date.h"
-#include "level.h"
+#include "times.hpp"
+#include "date.hpp"
+#include "level.hpp"
 
 struct LogEntry {
 	Date date;

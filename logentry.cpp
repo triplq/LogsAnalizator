@@ -1,4 +1,4 @@
-#include "logentry.h"
+#include "logentry.hpp"
 #include <cctype>
 #include <stdexcept>
 #include <vector>

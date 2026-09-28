@@ -20,27 +20,28 @@ public:
 		std::string time_string(time.substr(0, 2));
 		hours = std::stoi(time_string);
 
+		if (hours > 23) 
+			throw std::invalid_argument("Wrong hour");
+
 		time_string = time.substr(3, 2);
 		minutes = std::stoi(time_string);
 
+		if (minutes > 59)
+			throw std::invalid_argument("Wrong minutes");
+
 		time_string = time.substr(6, 2);
 		seconds = std::stoi(time_string);
+
+		if (seconds > 59)
+			throw std::invalid_argument("Wrong seconds");
 	}
-
-	bool is_current() const {
-		std::time_t now = std::time(nullptr);
-		std::tm *now_tm = std::localtime(&now);
-
-		return !(hours != now_tm->tm_hour || minutes != now_tm->tm_min || seconds != now_tm->tm_sec);
-	}
-
 
 	bool operator> (const Time& other) const {
-		return hours > other.hours || hours >= other.hours && minutes > other.minutes || hours >= other.hours && minutes >= other.minutes && seconds > other.seconds;
+		return hours > other.hours || (hours >= other.hours && minutes > other.minutes) || (hours >= other.hours && minutes >= other.minutes && seconds > other.seconds);
 	}
 
 	bool operator< (const Time& other) const {
-		return hours < other.hours || hours <= other.hours && minutes < other.minutes || hours <= other.hours && minutes <= other.minutes && seconds < other.seconds;
+		return hours < other.hours || (hours <= other.hours && minutes < other.minutes) || (hours <= other.hours && minutes <= other.minutes && seconds < other.seconds);
 	}
 
 	bool operator== (const Time& other) const {
@@ -52,11 +53,11 @@ public:
 	}
 
 	bool operator>= (const Time& other) const {
-		return hours > other.hours || hours >= other.hours && minutes > other.minutes || hours >= other.hours && minutes >= other.minutes && seconds > other.seconds || seconds == other.seconds && minutes == other.minutes && hours == other.hours;
+		return hours > other.hours || (hours >= other.hours && minutes > other.minutes) || (hours >= other.hours && minutes >= other.minutes && seconds > other.seconds) || (seconds == other.seconds && minutes == other.minutes && hours == other.hours);
 	}
 
 	bool operator<= (const Time& other) const {
-		return hours < other.hours || hours <= other.hours && minutes < other.minutes || hours <= other.hours && minutes <= other.minutes && seconds < other.seconds || seconds == other.seconds && minutes == other.minutes && hours == other.hours;
+		return hours < other.hours || (hours <= other.hours && minutes < other.minutes) || (hours <= other.hours && minutes <= other.minutes && seconds < other.seconds) || (seconds == other.seconds && minutes == other.minutes && hours == other.hours);
 	}
 
 	unsigned int get_int() const {

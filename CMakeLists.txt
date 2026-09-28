@@ -12,3 +12,6 @@ add_custom_command(TARGET main POST_BUILD
 		"${CMAKE_CURRENT_SOURCE_DIR}/Resources"
 		"$<TARGET_FILE_DIR:main>/Resources"
 )
+
+target_compile_options(main PRIVATE -Wall -Wextra -Wshadow -fsanitize=address,undefined)
+target_link_options(main PRIVATE -fsanitize=address,undefined)
