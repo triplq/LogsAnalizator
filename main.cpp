@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <exception>
 #include <fstream>
 #include <functional>
 #include <iostream>
@@ -77,30 +78,33 @@ int main(int argc, char* argv[]) {
 		while (std::getline(in, line)) {
 			try {
 				logs.push_back(LogEntry(line));
-				if (filters.size() != 0) {
-					bool allow = true;
-					for (const auto& filter : filters) {
-						if (!filter(logs[logs.size()-1])) {
-							allow = false;
-						}
-					}
-					if (allow) {
-						std::cout << logs[logs.size()-1] << '\n';
-					}
-				}
-				levels[logs[logs.size()-1].level]++;
+				levels[logs.back().level]++;
 
-				subsystems[logs[logs.size()-1].subsystem]++;
+				subsystems[logs.back().subsystem]++;
 
-				std::string str = logs[logs.size()-1].message;
+				std::string str = logs.back().message;
 				str.erase(std::remove_if(str.begin(), str.end(), [](const unsigned char& ch) { return std::isdigit(ch); }), str.end());
 				messages[str]++;
-			} catch (std::invalid_argument) {
+			} catch (std::exception&) {
 				counter++;
 			}
 		}
 	}
 	in.close();
+
+	if (filters.size() != 0) {
+		for (size_t i = 0; i < logs.size(); i++) {
+			bool allow = true;
+			for (const auto& filter : filters) {
+				if (!filter(logs[i])) {
+					allow = false;
+				}
+			}
+			if (allow) {
+				std::cout << logs[i] << '\n';
+			}
+		}
+	}
 
 	std::vector<std::pair<std::string, size_t>> subsystems_vector {std::make_move_iterator(subsystems.begin()), std::make_move_iterator(subsystems.end())};
 	std::partial_sort(subsystems_vector.begin(), subsystems_vector.begin() + 5, subsystems_vector.end(), [](const auto& a, const auto& b){ return a.second > b.second; });

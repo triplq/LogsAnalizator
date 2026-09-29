@@ -33,7 +33,7 @@ LogEntry::LogEntry(std::string_view str) {
 	}
 
 	subsystem = words[3];
-	for (auto& c : subsystem) {
+	for (const auto& c : subsystem) {
 		if (std::isupper(c)) {
 			throw std::invalid_argument("Something with subsystem");
 		}
