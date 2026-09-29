@@ -17,13 +17,10 @@ public:
 			throw std::invalid_argument("Wrong data type");
 		}
 
-		std::time_t now = std::time(nullptr);
-		std::tm *now_tm = std::localtime(&now);
-
 		std::string date_string(date.substr(0, 4));
 		year = std::stoi(date_string);
 
-		if (year > static_cast<unsigned int>(now_tm->tm_year)) 
+		if (year < 2025) 
 			throw std::invalid_argument("Wrong year");
 
 		date_string = date.substr(5, 2);

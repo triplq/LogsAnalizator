@@ -134,7 +134,7 @@ int main(int argc, char* argv[]) {
 	newest_line(logs);
 	oldest_line(logs);
 	
-	interval_between_errors(logs, levels);
+	interval_between_errors(logs);
 	most_send_message(messages);
 	
 

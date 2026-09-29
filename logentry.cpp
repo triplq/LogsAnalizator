@@ -55,6 +55,17 @@ bool LogEntry::operator!= (const LogEntry& other) const {
 	return (message != other.message || subsystem != other.subsystem || level != other.level || time != other.time || date != other.date);
 }
 
+unsigned int LogEntry::get_int() const {
+	bool k = false;
+	if ((date.get_year() % 4 == 0 && date.get_year() % 100 != 0) || date.get_year() % 400 == 0)
+		k = true;
+
+	unsigned int days_since = date.get_day() + (367 * date.get_month() / 12) - ((date.get_month()) + 9 / 12) * (2 + static_cast<int>(k)) + 2;
+
+	return time.get_int() + days_since * 86400;
+
+}
+
 std::ostream& operator<<(std::ostream& stream, const LogEntry& log) {
 	std::string level;
 	switch (log.level) {

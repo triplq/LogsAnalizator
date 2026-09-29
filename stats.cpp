@@ -35,7 +35,7 @@ void interval_between_errors(const std::vector<LogEntry> &logs) {
 	std::vector<int> errors_time;
 	for (size_t i = 0; i < logs.size(); i++) {
 		if (logs[i].level == Level::Error)
-			errors_time.push_back(logs[i].time.get_int());
+			errors_time.push_back(logs[i].get_int());
 	}
 	
 	std::vector<int> errors_difference;

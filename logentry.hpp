@@ -15,6 +15,8 @@ struct LogEntry {
 	explicit LogEntry(std::string_view str);
 
 	bool operator!= (const LogEntry& other) const;
+
+	unsigned int get_int() const;
 };
 
 std::ostream& operator<<(std::ostream& stream, const LogEntry& log);
