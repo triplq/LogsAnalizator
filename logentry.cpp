@@ -1,5 +1,6 @@
 #include "logentry.hpp"
 #include <cctype>
+#include <iomanip>
 #include <stdexcept>
 #include <vector>
 #include <iostream>
@@ -81,7 +82,8 @@ std::ostream& operator<<(std::ostream& stream, const LogEntry& log) {
 	}
 
 	stream << log.date.get_year() << '-' << log.date.get_month() << '-' << log.date.get_day() 
-		<< ' ' << log.time.get_hours() << ':' << log.time.get_minutes() << ':' << log.time.get_seconds() << ' ' << level << ' '
+		<< ' ' << std::setw(2) << std::setfill('0') << log.time.get_hours() << ':' << std::setw(2) << std::setfill('0') 
+		<< log.time.get_minutes() << ':' << std::setw(2) << std::setfill('0') << log.time.get_seconds() << ' ' << level << ' '
 		<< log.subsystem << ' ' << log.message;
 
 	return stream;
