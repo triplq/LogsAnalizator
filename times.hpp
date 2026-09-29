@@ -11,7 +11,11 @@ private:
 	unsigned int seconds;
 
 public:
-	Time() { }
+	Time() {
+		hours = 0;
+		minutes = 0;
+		seconds = 0;
+	}
 	explicit Time(std::string_view time) {
 		if (time.length() != 8 || time[2] != ':' || time[5] != ':') {
 			throw std::invalid_argument("Wrong time type");
@@ -60,7 +64,7 @@ public:
 		return hours < other.hours || (hours <= other.hours && minutes < other.minutes) || (hours <= other.hours && minutes <= other.minutes && seconds < other.seconds) || (seconds == other.seconds && minutes == other.minutes && hours == other.hours);
 	}
 
-	unsigned int get_int() const {
+	unsigned int get_second_in_day() const {
 		return (hours * 60 * 60) + (minutes* 60) + seconds;
 	}
 	unsigned int get_hours() const { return hours; }

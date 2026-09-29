@@ -53,7 +53,7 @@ int main(int argc, char* argv[]) {
 
 		if (key == "after") {
 			filters.push_back([value](const LogEntry& p){
-				return (p.time.get_int()) > static_cast<unsigned int>(std::stoi(value.substr(0, 2)) * 60 * 60) + (std::stoi(value.substr(3, 2)) * 60);
+				return (p.time.get_second_in_day()) > static_cast<unsigned int>(std::stoi(value.substr(0, 2)) * 60 * 60) + (std::stoi(value.substr(3, 2)) * 60);
 			});
 		}
 

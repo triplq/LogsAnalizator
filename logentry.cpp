@@ -57,14 +57,7 @@ bool LogEntry::operator!= (const LogEntry& other) const {
 }
 
 unsigned int LogEntry::get_int() const {
-	bool k = false;
-	if ((date.get_year() % 4 == 0 && date.get_year() % 100 != 0) || date.get_year() % 400 == 0)
-		k = true;
-
-	unsigned int days_since = date.get_day() + (367 * date.get_month() / 12) - ((date.get_month()) + 9 / 12) * (2 + static_cast<int>(k)) + 2;
-
-	return time.get_int() + days_since * 86400;
-
+	return date.get_days_in_JD() * 86400 + time.get_second_in_day();
 }
 
 std::ostream& operator<<(std::ostream& stream, const LogEntry& log) {

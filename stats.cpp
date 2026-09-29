@@ -42,7 +42,7 @@ void interval_between_errors(const std::vector<LogEntry> &logs) {
 	std::adjacent_difference(errors_time.begin(), errors_time.end(), std::back_inserter(errors_difference));
 
 	int accum = std::accumulate(errors_difference.begin() + 1, errors_difference.end(), 0, [](auto& acc, const auto& it){ return acc + it; });
-	std::cout << accum / errors_difference.size() << '\n';
+	std::cout << accum / (errors_difference.size() - 1) << '\n';
 }
 
 void most_send_message(std::unordered_map<std::string, size_t>& messages) {

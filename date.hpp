@@ -11,7 +11,11 @@ private:
 	unsigned int day;
 
 public:
-	Date() { }
+	Date() {
+		year = 0;
+		month = 0;
+		day = 0;
+	}
 	explicit Date(std::string_view date) {
 		if (date.length() != 10 || date[4] != '-' || date[7] != '-') {
 			throw std::invalid_argument("Wrong data type");
@@ -58,6 +62,19 @@ public:
 
 	bool operator<= (const Date& other) const {
 		return year < other.year || (year <= other.year && month < other.month) || (year <= other.year && month <= other.month && day < other.day) || (day == other.day && month == other.month && year == other.year);
+	}
+
+	unsigned int get_days_in_JD() const {
+		unsigned int n_month = month;
+		unsigned int n_year = year;
+		if (month <= 2) {
+			n_month += 12;
+			n_year -= 1;
+		}
+
+		unsigned int JD = 365 * n_year + n_year / 4 - n_year / 100 + n_year / 400 + (306 * (n_month + 1)) / 10 + day;
+
+		return JD - 739249;
 	}
 
 	unsigned int get_year() const { return year; }
